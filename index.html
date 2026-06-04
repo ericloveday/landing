@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Mr. Loveday's Classes</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
@@ -15,191 +16,214 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #000000;
-            color: #f8fafc;
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            justify-content: center;
             padding: 40px 20px;
         }
 
-        /* Header Styling */
+        /* Top Announcement Strip Style */
+        .top-strip {
+            width: 100%;
+            background-color: #82c341;
+            color: #000000;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        /* Header Accent Block */
         .main-header {
             text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 1100px;
         }
 
         .main-header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-            background: linear-gradient(to right, #cc0001, #0277be);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: #cc0001;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: inline-block;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .main-header p {
-            color: #94a3b8;
-            font-size: 1.2rem;
+            color: #aaaaaa;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-weight: 500;
         }
 
-        /* Split Container */
+        /* Three Square Grid Layout */
         .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
             width: 100%;
-            gap: 30px;
-            max-width: 1200px;
+            max-width: 1100px;
+            margin-bottom: 20px;
         }
 
-        /* Card Link Basics */
+        /* Square Card Styling */
         .card {
-            flex: 1;
             text-decoration: none;
             color: inherit;
-            border-radius: 24px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 400px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-
-        /* Background Gradients */
-        .science-card {
-            background: linear-gradient(135deg, #000000 0%, #cc0001 100%);
-            box-shadow: 0 10px 30px rgba(4, 120, 87, 0.2);
-        }
-
-        .robotics-card {
-            background: linear-gradient(135deg, #000000 0%, #0277be 100%);
-            box-shadow: 0 10px 30px rgba(29, 78, 216, 0.2);
-        }
-
-        /* Smooth Hover Dynamics */
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-        }
-
-        .science-card:hover {
-            box-shadow: 0 25px 50px rgba(204, 0, 1, 0.35);
-        }
-
-        .robotics-card:hover {
-            box-shadow: 0 25px 50px rgba(2, 119, 190, 0.35);
-        }
-
-        /* Card Content Styling */
-        .content {
-            padding: 40px;
+            background-color: #111111;
+            border: 2px solid #222222;
+            border-radius: 12px;
+            aspect-ratio: 1 / 1; /* Keeps them perfectly square */
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
-            max-width: 450px;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Hover states using site brand colors */
+        .science-card:hover {
+            transform: translateY(-5px);
+            border-color: #cc0001;
+            box-shadow: 0 10px 25px rgba(204, 0, 1, 0.25);
+        }
+
+        .bathroom-card:hover {
+            transform: translateY(-5px);
+            border-color: #82c341;
+            box-shadow: 0 10px 25px rgba(130, 195, 65, 0.25);
+        }
+
+        .robotics-card:hover {
+            transform: translateY(-5px);
+            border-color: #0277be;
+            box-shadow: 0 10px 25px rgba(2, 119, 190, 0.25);
+        }
+
+        /* Content elements inside square cards */
         .icon {
-            font-size: 5rem;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
 
         .card:hover .icon {
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.1);
         }
 
-        .content h2 {
-            font-size: 2.2rem;
+        .card h2 {
+            font-size: 1.4rem;
             font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
             color: #ffffff;
         }
 
-        .content p {
-            color: #cbd5e1;
-            font-size: 1.05rem;
-            line-height: 1.6;
+        .card p {
+            color: #888888;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            max-width: 220px;
         }
 
-        /* Styled Buttons */
+        /* Launch Button Tags */
         .btn-label {
-            margin-top: 15px;
-            padding: 12px 36px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 50px;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: background 0.3s, border-color 0.3s, color 0.3s;
+            padding: 8px 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            color: #ffffff;
+            background-color: #222222;
+            border: 1px solid #333333;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
-        /* Updated Button Hover Colors */
         .science-card:hover .btn-label {
-            background: #cc0001;
+            background-color: #cc0001;
             border-color: #cc0001;
-            color: #ffffff;
+        }
+
+        .bathroom-card:hover .btn-label {
+            background-color: #82c341;
+            border-color: #82c341;
+            color: #000000;
         }
 
         .robotics-card:hover .btn-label {
-            background: #0277be;
+            background-color: #0277be;
             border-color: #0277be;
-            color: #ffffff;
         }
 
-        /* Responsive Layout for Mobile */
-        @media (max-width: 768px) {
+        /* Mobile Layout Breakpoints */
+        @media (max-width: 850px) {
             .container {
-                flex-direction: column;
-                gap: 20px;
+                grid-template-columns: 1fr; /* Stacks vertically on smaller screens */
+                max-width: 400px;
             }
             .card {
-                min-height: 340px;
+                aspect-ratio: auto;
+                min-height: 280px;
             }
             .main-header h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="top-strip">
+        Welcome to Cornerstone Charter Academy
+    </div>
+
     <header class="main-header">
-        <h1>Welcome to Mr. Loveday's Classroom</h1>
-        <p>Select your destination to get started</p>
+        <h1>Mr. Loveday's Classroom</h1>
+        <p>Select a destination panel below to get started</p>
     </header>
 
     <div class="container">
         <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/home-page" class="card science-card">
-            <div class="content">
-                <div class="icon">🧬</div>
-                <h2>Science</h2>
-                
-                <span class="btn-label">Launch Science</span>
-            </div>
+            <div class="icon">🔬</div>
+            <h2>Science</h2>
+            <p>Explore the natural world, view daily agendas, and check announcements.</p>
+            <span class="btn-label">Launch Science</span>
         </a>
 
-        <a href="https://sites.google.com/cornerstonek12.org/ccarobotics?usp=sharing" class="card robotics-card">
-            <div class="content">
-                <div class="icon">🤖</div>
-                <h2>Robotics</h2>
-              
-                <span class="btn-label">Launch Robotics</span>
-            </div>
+        <a href="https://ericloveday.github.io/landing/bathroom.html" target="_blank" class="card bathroom-card">
+            <div class="icon">🚽</div>
+            <h2>Bathroom</h2>
+            <p>Need to leave the room? Please check out here before you leave.</p>
+            <span class="btn-label">Sign Out</span>
+        </a>
+
+        <a href="https://sites.google.com/cornerstonek12.org/ccarobotics/home" class="card robotics-card">
+            <div class="icon">🤖</div>
+            <h2>Robotics</h2>
+            <p>Build the future with VEX IQ, explore calendars, and check team updates.</p>
+            <span class="btn-label">Launch Robotics</span>
         </a>
     </div>
-<hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; width: 100%; max-width: 1200px;">
-<div style="text-align: center; margin-top: 30px;">
-    <h2 style="font-size: 1.8rem; margin-bottom: 8px;">🚽 Bathroom Sign-Out</h2>
-    <p style="color: #94a3b8; margin-bottom: 16px;">Need to leave the room? Please use the link below before you go.</p>
-    <a href="https://ericloveday.github.io/landing/bathroom.html" target="_blank" style="padding: 12px 28px; background-color: #1e293b; color: #f8fafc; text-decoration: none; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; display: inline-block; transition: background 0.3s;">Open Sign-Out Form</a>
-</div>
+
 </body>
 </html>
