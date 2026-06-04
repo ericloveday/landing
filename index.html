@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Mr. Loveday's Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Header Styling */
+        .main-header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .main-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(to right, #38bdf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-header p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        /* Split Container */
+        .container {
+            display: flex;
+            width: 100%;
+            gap: 30px;
+            max-width: 1200px;
+        }
+
+        /* Card Link Basics */
+        .card {
+            flex: 1;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        /* Background Gradients */
+        .science-card {
+            background: linear-gradient(135deg, #065f46 0%, #022c22 100%);
+            box-shadow: 0 10px 30px rgba(4, 120, 87, 0.2);
+        }
+
+        .robotics-card {
+            background: linear-gradient(135deg, #1e40af 0%, #1e1b4b 100%);
+            box-shadow: 0 10px 30px rgba(29, 78, 216, 0.2);
+        }
+
+        /* Smooth Hover Dynamics */
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .science-card:hover {
+            box-shadow: 0 25px 50px rgba(52, 211, 153, 0.35);
+        }
+
+        .robotics-card:hover {
+            box-shadow: 0 25px 50px rgba(56, 189, 248, 0.35);
+        }
+
+        /* Card Content Styling */
+        .content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            max-width: 450px;
+        }
+
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .content p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Styled Buttons */
+        .btn-label {
+            margin-top: 15px;
+            padding: 12px 36px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .science-card:hover .btn-label {
+            background: #34d399;
+            border-color: #34d399;
+            color: #022c22;
+        }
+
+        .robotics-card:hover .btn-label {
+            background: #38bdf8;
+            border-color: #38bdf8;
+            color: #1e1b4b;
+        }
+
+        /* Responsive Layout for Mobile */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .card {
+                min-height: 340px;
+            }
+            .main-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Welcome to Mr. Loveday's Classroom</h1>
+        <p>Select your destination to get started</p>
+    </header>
+
+    <div class="container">
+        <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/home-page" class="card science-card">
+            <div class="content">
+                <div class="icon">🔬</div>
+                <h2>7th Grade Science</h2>
+                <p>Explore the natural world, view daily agendas, and check announcements.</p>
+                <span class="btn-label">Launch Science</span>
+            </div>
+        </a>
+
+        <a href="https://sites.google.com/cornerstonek12.org/ccarobotics/home" class="card robotics-card">
+            <div class="content">
+                <div class="icon">🤖</div>
+                <h2>Robotics & Coding</h2>
+                <p>Build the future with VEX IQ, explore calendars, and check team updates.</p>
+                <span class="btn-label">Launch Robotics</span>
+            </div>
+        </a>
+    </div>
+
+</body>
+</html>
