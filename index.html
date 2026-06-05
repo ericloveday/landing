@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Mr. Loveday's Classes</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #000000;
@@ -45,12 +39,11 @@
         /* Header Accent Block */
         .main-header {
             text-align: center;
-            
             margin-bottom: 40px;
             width: 100%;
             max-width: 1100px;
+            margin-top: 40px;
         }
-
         .main-header h1 {
             font-size: 2.5rem;
             font-weight: 800;
@@ -58,20 +51,18 @@
             letter-spacing: 1px;
             background-color: #cc0001;
             color: #ffffff;
-           
             display: inline-block;
             border-radius: 4px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            padding: 5px 15px; 
         }
-
         .main-header p {
             color: #aaaaaa;
             font-size: 1.1rem;
-            
             font-weight: 500;
         }
 
-        /* Three Square Grid Layout */
+        /* Three Column Grid Layout */
         .container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -81,6 +72,13 @@
             margin-bottom: 20px;
         }
 
+        /* Middle Column Wrapper for Stacking Half-Cards */
+        .middle-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
         /* Square Card Styling */
         .card {
             text-decoration: none;
@@ -88,7 +86,7 @@
             background-color: #111111;
             border: 2px solid #222222;
             border-radius: 12px;
-            aspect-ratio: 1 / 1; /* Keeps them perfectly square */
+            aspect-ratio: 1 / 1; /* Keeps outer columns perfectly square */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -98,19 +96,29 @@
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Override settings for the split cards in the center */
+        .half-card {
+            aspect-ratio: auto;
+            flex: 1; /* Ensures both cards share exactly half the vertical space */
+            padding: 15px 20px;
+        }
+
         /* Hover states using site brand colors */
         .science-card:hover {
             transform: translateY(-5px);
             border-color: #cc0001;
             box-shadow: 0 10px 25px rgba(204, 0, 1, 0.25);
         }
-
         .bathroom-card:hover {
             transform: translateY(-5px);
             border-color: #82c341;
             box-shadow: 0 10px 25px rgba(130, 195, 65, 0.25);
         }
-
+        .missing-work-card:hover {
+            transform: translateY(-5px);
+            border-color: #f39c12; /* Orange Accent */
+            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.25);
+        }
         .robotics-card:hover {
             transform: translateY(-5px);
             border-color: #0277be;
@@ -123,11 +131,13 @@
             margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
-
+        .half-card .icon {
+            font-size: 2.2rem; /* Shrunk slightly to fit half-height cleanly */
+            margin-bottom: 10px;
+        }
         .card:hover .icon {
             transform: scale(1.1);
         }
-
         .card h2 {
             font-size: 1.4rem;
             font-weight: 800;
@@ -136,13 +146,18 @@
             margin-bottom: 10px;
             color: #ffffff;
         }
-
+        .half-card h2 {
+            font-size: 1.1rem;
+        }
         .card p {
             color: #888888;
             font-size: 0.85rem;
             line-height: 1.5;
             margin-bottom: 15px;
             max-width: 220px;
+        }
+        .half-card p {
+            margin-bottom: 10px;
         }
 
         /* Launch Button Tags */
@@ -158,24 +173,23 @@
             border: 1px solid #333333;
             transition: background-color 0.3s, border-color 0.3s;
         }
-
         .science-card:hover .btn-label {
             background-color: #cc0001;
             border-color: #cc0001;
         }
-
         .bathroom-card:hover .btn-label {
             background-color: #82c341;
             border-color: #82c341;
             color: #000000;
         }
-
+        .missing-work-card:hover .btn-label {
+            background-color: #f39c12;
+            border-color: #f39c12;
+            color: #000000;
+        }
         .robotics-card:hover .btn-label {
             background-color: #0277be;
             border-color: #0277be;
-        }
-        .container {
-            margin-top: 40px;
         }
 
         /* Mobile Layout Breakpoints */
@@ -188,6 +202,9 @@
                 aspect-ratio: auto;
                 min-height: 280px;
             }
+            .half-card {
+                min-height: 200px;
+            }
             .main-header h1 {
                 font-size: 1.8rem;
             }
@@ -195,16 +212,17 @@
     </style>
 </head>
 <body>
-<div class="top-strip">
+
+    <div class="top-strip">
         WELCOME TO MR. LOVEDAY'S CLASSROOM!
     </div>
 
     <header class="main-header">
-       <p>Select a destination panel below to get started</p>
+        <p>Select a destination panel below to get started</p>
     </header>
-  
- 
+
     <div class="container">
+        
         <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/home-page" class="card science-card">
             <div class="icon">🔬</div>
             <h2>Science</h2>
@@ -212,12 +230,23 @@
             <span class="btn-label">Launch Science</span>
         </a>
 
-        <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/bathroom" target="_blank" class="card bathroom-card">
-            <div class="icon">🚽</div>
-            <h2>Bathroom</h2>
-            <p>Need to leave the room? Please check out here before you leave.</p>
-            <span class="btn-label">Sign Out</span>
-        </a>
+        <div class="middle-column">
+            
+            <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/bathroom" target="_blank" class="card bathroom-card half-card">
+                <div class="icon">🚽</div>
+                <h2>Bathroom</h2>
+                <p>Need to leave the room? Please check out here before you leave.</p>
+                <span class="btn-label">Sign Out</span>
+            </a>
+
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_TKK2ZtLk29Sf7bQjI3OY9OOUM3_WLOF6s6v4BsEkHW7ufQ/viewform?pli=1" target="_blank" class="card missing-work-card half-card">
+                <div class="icon">📋</div>
+                <h2>Missing Work</h2>
+                <p>Submit late or missing assignments for credit.</p>
+                <span class="btn-label">Submit Form</span>
+            </a>
+
+        </div>
 
         <a href="https://sites.google.com/cornerstonek12.org/ccarobotics/home" class="card robotics-card">
             <div class="icon">🤖</div>
@@ -225,6 +254,7 @@
             <p>Build the future with VEX IQ, explore calendars, and check team updates.</p>
             <span class="btn-label">Launch Robotics</span>
         </a>
+
     </div>
 
 </body>
