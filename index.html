@@ -77,14 +77,19 @@
 
         /* Lower Row for Centered Side-by-Side Half Cards */
         .bottom-row {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            width: 100%;
-            max-width: 725px; /* Keeps them visually balanced under the 3 large columns */
-            margin: 10px auto 0 auto;
-        }
+  grid-column: 1 / -1;
+  display: flex;                /* Changed from grid to flex */
+  justify-content: center;      /* Centers child elements horizontally */
+  gap: 25px;
+  width: 100%;
+  max-width: 725px;
+  margin: 10px auto 0 auto;
+}
+
+.bottom-row .card {
+  flex: 1;                      /* Lets cards expand naturally */
+  max-width: 350px;             /* Keeps card width restrained */
+}
 
         /* Square Card Styling */
         .card {
