@@ -77,19 +77,17 @@
 
         /* Lower Row for Centered Side-by-Side Half Cards */
         .bottom-row {
-  grid-column: 1 / -1;
-  display: flex;                /* Changed from grid to flex */
-  justify-content: center;      /* Centers child elements horizontally */
-  gap: 25px;
-  width: 100%;
-  max-width: 725px;
-  margin: 10px auto 0 auto;
-}
-
-.bottom-row .card {
-  flex: 1;                      /* Lets cards expand naturally */
-  max-width: 350px;             /* Keeps card width restrained */
-}
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            width: 100%;
+            margin: 10px auto 0 auto;
+        }
+        .bottom-row .card {
+            flex: 1;
+            max-width: 350px;
+        }
 
         /* Square Card Styling */
         .card {
@@ -98,7 +96,7 @@
             background-color: #111111;
             border: 2px solid #222222;
             border-radius: 12px;
-            aspect-ratio: 1 / 1; /* Keeps class columns perfectly square */
+            aspect-ratio: 1 / 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -113,6 +111,22 @@
             aspect-ratio: auto;
             min-height: 180px;
             padding: 20px;
+        }
+
+        /* Logo slot for half cards (falls back to emoji if image is missing) */
+        .card-logo {
+            height: 48px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .card-logo { transform: scale(1.1); }
+        .logo-fallback {
+            display: none;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
         }
 
         /* Hover states using site brand colors */
@@ -138,8 +152,18 @@
         }
         .missing-work-card:hover {
             transform: translateY(-5px);
-            border-color: #f39c12; /* Orange Accent */
+            border-color: #f39c12;
             box-shadow: 0 10px 25px rgba(243, 156, 18, 0.25);
+        }
+        .classroom-card:hover {
+            transform: translateY(-5px);
+            border-color: #1e8e3e;
+            box-shadow: 0 10px 25px rgba(30, 142, 62, 0.25);
+        }
+        .ncedcloud-card:hover {
+            transform: translateY(-5px);
+            border-color: #4a90d9;
+            box-shadow: 0 10px 25px rgba(74, 144, 217, 0.25);
         }
 
         /* Content elements inside square cards */
@@ -183,40 +207,28 @@
             border: 1px solid #333333;
             transition: background-color 0.3s, border-color 0.3s;
         }
-        .science-card:hover .btn-label {
-            background-color: #cc0001;
-            border-color: #cc0001;
-        }
-        .coding-card:hover .btn-label {
-            background-color: #0093a3;
-            border-color: #0093a3;
-        }
-        .robotics-card:hover .btn-label {
-            background-color: #0277be;
-            border-color: #0277be;
-        }
-        .bathroom-card:hover .btn-label {
-            background-color: #82c341;
-            border-color: #82c341;
-            color: #000000;
-        }
-        .missing-work-card:hover .btn-label {
-            background-color: #f39c12;
-            border-color: #f39c12;
-            color: #000000;
-        }
+        .science-card:hover .btn-label { background-color: #cc0001; border-color: #cc0001; }
+        .coding-card:hover .btn-label { background-color: #0093a3; border-color: #0093a3; }
+        .robotics-card:hover .btn-label { background-color: #0277be; border-color: #0277be; }
+        .bathroom-card:hover .btn-label { background-color: #82c341; border-color: #82c341; color: #000000; }
+        .missing-work-card:hover .btn-label { background-color: #f39c12; border-color: #f39c12; color: #000000; }
+        .classroom-card:hover .btn-label { background-color: #1e8e3e; border-color: #1e8e3e; }
+        .ncedcloud-card:hover .btn-label { background-color: #4a90d9; border-color: #4a90d9; color: #000000; }
 
         /* Mobile Layout Breakpoints */
         @media (max-width: 850px) {
             .container {
-                grid-template-columns: 1fr; /* Stacks vertically on smaller screens */
+                grid-template-columns: 1fr;
                 max-width: 400px;
             }
             .bottom-row {
-                grid-template-columns: 1fr;
-                max-width: 400px;
+                flex-direction: column;   /* actually stacks the flex row on mobile */
+                align-items: stretch;
                 margin: 0;
                 gap: 25px;
+            }
+            .bottom-row .card {
+                max-width: none;
             }
             .card {
                 aspect-ratio: auto;
@@ -250,7 +262,7 @@
             <span class="btn-label">Launch Coding</span>
         </a>
         
-  <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/home-page" class="card science-card">
+        <a href="https://sites.google.com/cornerstonek12.org/7thgradescience26-27/home-page" class="card science-card">
             <div class="icon">🔬</div>
             <h2>Science</h2>
             <p>View daily agenda, and check announcements.</p>
@@ -264,20 +276,37 @@
             <span class="btn-label">Launch Robotics</span>
         </a>
 
-       <div class="bottom-row">
+        <div class="bottom-row">
             <!-- This code is ignored by the browser and won't be seen on the page
             <a href="https://dancing-gecko-fc6c35.netlify.app" target="_blank" class="card bathroom-card half-card">
                 <h2>Bathroom</h2>
                 <p>Please check out and check in.</p>
                 <span class="btn-label">Sign Out</span>
-            </a>" -->
+            </a> -->
+
+            <a href="https://classroom.google.com/" target="_blank" class="card classroom-card half-card">
+                <img src="/google-classroom-logo.png" alt="Google Classroom logo" class="card-logo"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="logo-fallback">🏫</span>
+                <h2>Google Classroom</h2>
+                <p>Find assignments and turn in your work.</p>
+                <span class="btn-label">Open Classroom</span>
+            </a>
+
+            <a href="https://my.ncedcloud.org/" target="_blank" class="card ncedcloud-card half-card">
+                <img src="/ncedcloud-logo.png" alt="NCEdCloud logo" class="card-logo"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="logo-fallback">☁️</span>
+                <h2>NCEdCloud</h2>
+                <p>Sign in to your NC student apps.</p>
+                <span class="btn-label">Open NCEdCloud</span>
+            </a>
 
             <a href="https://unrivaled-blancmange-bbd8a4.netlify.app" target="_blank" class="card missing-work-card half-card">
                 <h2>Late Work</h2>
                 <p>Submit this form for ALL late assignments for credit.</p>
                 <span class="btn-label">Submit Form</span>
             </a>
-
         </div>
 
     </div>
